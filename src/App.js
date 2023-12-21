@@ -3,23 +3,31 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <body>
+      <div className='title'>
+          <h1>Weather!</h1>
+      </div>
+
+      <div className='location-button'>
+        <button onClick={getUserLocation()}>Get My Location!</button>
+      </div>
+
+    </body>
   );
+}
+
+function getUserLocation() {
+  if (navigator.geolocation) {
+
+    //code for getting user location using Geolocation API
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+    });
+
+    
+  } else {
+    console.log("Geolocation is not supported on this browser!");
+  }
 }
 
 export default App;
